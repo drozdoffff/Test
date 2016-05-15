@@ -1,0 +1,6 @@
+[
+  "com.company.Hendlers.SemicolonHandler",
+  "com.company.Hendlers.CloseBraceHandler",
+  "com.company.Hendlers.OpenBraceHandler",
+  "com.company.Hendlers.ExtraSpacesHandler"
+]
