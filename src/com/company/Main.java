@@ -1,11 +1,32 @@
 package com.company;
 
+import com.company.IOStreams.File.ReadFile;
+import com.company.IOStreams.File.WriteFile;
+import com.company.IOStreams.IReader;
+import com.company.IOStreams.IWriter;
+import com.company.formatter.FormatSettings;
+import com.company.formatter.Formatter;
+
 import java.io.*;
 public class Main {
-    public static void main(String[] args) throws
-            IOException {
+    public static void main(String[] args) throws IOException, IllegalAccessException, InstantiationException, ClassNotFoundException {
+        String nameFileIn = args[0];
+        String nameFileOut = args[1];
+        String nameFileSettings = args[2];
+        String nameFileJson = args[3];
 
 
+        IReader fr = new ReadFile(nameFileIn);
+        IWriter fw = new WriteFile(nameFileOut);
+        FormatSettings formatSettings = new FormatSettings(nameFileSettings,nameFileJson);
+
+        Formatter.format(fr, fw, formatSettings);
+
+        fw.close();
+
+
+        // Способ: через регулярные выражения
+        /*
         String code = "while(inputStream.hasNext()){char symbol = inputStream.read();} while(inputStream.hasNext()){char symbol = inputStream.read();}";
 
         String regex = "(for|while|if)";
@@ -18,7 +39,7 @@ public class Main {
         String result2 = result1.replaceAll(regex2, ";"+String.format("%n")+"   ");
 
         System.out.println(result2);
-
+        */
 
     }
 }
